@@ -6,22 +6,22 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('SideAndNavigation', ['ionic'])
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    if(window.StatusBar) {
-      StatusBar.styleDefault();
-    }
-  });
-})
+    .run(function($ionicPlatform) {
+        $ionicPlatform.ready(function() {
+            if(window.StatusBar) {
+                StatusBar.styleDefault();
+            }
+        });
+    })
 
 
-.config(function($stateProvider, $urlRouterProvider) {
+    .config(function($stateProvider, $urlRouterProvider) {
 
         $stateProvider
             .state('sidemenu', {
                 url: "/sidemenu",
                 abstract: true,
-                templateUrl: "/templates/sideMenus.html"
+                templateUrl: "templates/sideMenus.html"
             })
             .state('sidemenu.home', {
                 url: "/home",
@@ -78,22 +78,22 @@ angular.module('SideAndNavigation', ['ionic'])
                         templateUrl: "templates/menuTwoC.html"
                     }
                 }
-            })
+            });
 
         $urlRouterProvider.otherwise("/sidemenu/home");
-})
+    })
 
 
-.controller('MainNavigationCtrl', function($scope, $ionicNavBarDelegate, $ionicSideMenuDelegate) {
+    .controller('MainNavigationCtrl', function($scope, $ionicNavBarDelegate, $ionicSideMenuDelegate) {
 
         $scope.getPreviousTitle = function() { return $ionicNavBarDelegate.$getByHandle('mainNavBar').getPreviousTitle() };
 
         $scope.toggleRight = function () {  return $ionicSideMenuDelegate.$getByHandle('mainSideMenu').toggleRight()} ;
 
 
-})
+    })
 
-.controller('RightMenuCtrl', function($scope, $state, $ionicNavBarDelegate) {
+    .controller('RightMenuCtrl', function($scope, $state) {
 
         var homeMenu = {stateName : 'sidemenu.home', labelName: 'Home' };
         var pageOneMenu = {stateName : 'sidemenu.menuOneA', labelName: 'Menu One' };
@@ -105,11 +105,11 @@ angular.module('SideAndNavigation', ['ionic'])
 
         $scope.setActiveSubMenu = function(subMenuStateName) {
 
-        $scope.activeSubMenuStateName=subMenuStateName;
+            $scope.activeSubMenuStateName=subMenuStateName;
 
-          return $state.go(subMenuStateName);
+            return $state.go(subMenuStateName);
 
-         };
+        };
 
 
-});
+    });
