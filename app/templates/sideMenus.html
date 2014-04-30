@@ -15,12 +15,12 @@
     </ion-side-menu-content>
 
     <ion-side-menu side="right" ng-controller="RightMenuCtrl">
-        <ion-header-bar class="bar-dark">
+        <ion-header-bar align-title="right" class="bar-dark">
             <h1 class="title">Menu</h1>
         </ion-header-bar>
         <ion-content>
             <ion-list>
-                <ion-item ng-repeat="subMenu in subMenus" nav-clear menu-close ng-class="{active: activeSubMenuStateName == subMenu.stateName }" ng-click="setActiveSubMenu(subMenu.stateName)">{{subMenu.labelName}}</ion-item>
+                <ion-item align="right" ng-repeat="subMenu in subMenus" nav-clear menu-close ng-class="{active: activeSubMenuStateName == subMenu.stateName }" ng-click="setActiveSubMenu(subMenu.stateName)">{{subMenu.labelName}}</ion-item>
             </ion-list>
         </ion-content>
     </ion-side-menu>
